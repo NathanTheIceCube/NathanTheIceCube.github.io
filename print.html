@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+</style>
+</head>
+<body style="font-family: 'Roboto', sans-serif;">
+<center>
+<h1 style="font-size: 15px;">The <code>print()</code> function is a pretty simple piece of code which shows the word <code>"Hello World"</code> or whatever you put inside</h1>
+
+<textarea contenteditable="false"id="myInput">print("Hello World!")</textarea>
+<div class="tooltip">
+<button onclick="myFunction()" onmouseout="outFunc()">
+<span class="material-icons">
+content_copy
+</span>
+  <span class="tooltiptext" id="myTooltip"></span>
+  </button>
+</div>
+<h1 style="font-size: 15px;">When you run this is the command bar or in a script in the workspace, open up the console by saying in the chat <code>/console</code> and you will see in white text saying Hello World!</h1>
+</center>
+
+<script>
+function myFunction() {
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copied: " + copyText.value;
+}
+
+function outFunc() {
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copy to clipboard";
+}
+</script>
+
+</body>
+</html>
