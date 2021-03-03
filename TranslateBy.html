@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <title>Print Function - NathanTheIceCube</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+</style>
+      <style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body style="font-family: 'Roboto', sans-serif;">
+      <div class="topnav">
+  <a href="/index.html">Home</a>
+  <a class="active" href="/codes.html">Codes</a>
+  <a href="/social.html">Social</a>
+  <a href="/about.html">About</a>
+</div>
+<center>
+<h1 style="font-size: 15px;">The <code>print()</code> function is a pretty simple piece of code which shows the word <code>"Hello World"</code> or whatever you put inside</h1>
+
+<textarea contenteditable="false"id="myInput">-- define two Positions
+local startPosition = Vector3.new(-20, 10, 0)
+local endPosition = Vector3.new(0, 10, 0)
+ 
+-- create a simple rotated model at the startPosition
+local model = Instance.new("Model", game.Workspace)
+ 
+local part1 = Instance.new("Part")
+part1.Size = Vector3.new(4, 4, 4)
+part1.CFrame = CFrame.new(startPosition) * CFrame.Angles(0, math.rad(45), 0)
+part1.Anchored = true
+part1.BrickColor = BrickColor.new("Bright yellow")
+part1.Parent = model
+ 
+local part2 = Instance.new("Part")
+part2.Size = Vector3.new(2, 2, 2)
+part2.CFrame = part1.CFrame * CFrame.new(0, 3, 0)
+part2.Anchored = true
+part2.BrickColor = BrickColor.new("Bright blue")
+part2.Parent = model
+ 
+-- set the primary part
+model.PrimaryPart = part1
+model.Parent = game.Workspace
+ 
+-- create an obstruction at the endPosition
+local obstruction = Instance.new("Part")
+obstruction.Name = "Obstruction"
+obstruction.Size = Vector3.new(10, 10, 10)
+obstruction.Position = Vector3.new(0, 10, 0)
+obstruction.Transparency = 0.5
+obstruction.Anchored = true
+obstruction.BrickColor = BrickColor.new("Bright green")
+obstruction.Parent = game.Workspace
+ 
+wait(3)
+-- use TranslateBy to shift the model into the obstruction
+model:TranslateBy(endPosition - startPosition)</textarea>
+<div class="tooltip">
+<button onclick="myFunction()" onmouseout="outFunc()">
+<span class="material-icons">
+content_copy
+</span>
+  <span class="tooltiptext" id="myTooltip"></span>
+  </button>
+</div>
+  <span>Sour
+  <h1 style="font-size: 15px;"><h1>The TranslateBy code</h1>
+    <h2>The TranslateBy code makes the model move by Vector3</h2>
+</center>
+
+<script>
+function myFunction() {
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copied: " + copyText.value;
+}
+
+function outFunc() {
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copy to clipboard";
+}
+</script>
+
+</body>
+</html>
